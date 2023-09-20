@@ -7,6 +7,7 @@
 html{
     scroll-behavior: smooth;
     background-color: rgb(0, 0, 0,1);
+    /* background-color: rgb(168, 40, 40); */
 }
 
 .navbar-kappa-start{
@@ -142,6 +143,38 @@ html{
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+}
+
+/*DropDown*/
+.dropdown a{
+    text-decoration: none;
+    transition: 0.2s;
+    width: 100%;
+}
+
+.dropdown a:hover{
+    background-color: gray;
+}
+
+.dropdown li{
+    display: flex;
+    position: relative;
+}
+
+.dropdown{
+    position: absolute;
+    display: block;
+    background-color: white;
+    top: 140px;
+    border-radius: 4px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.dropdown-link:hover .dropdown{
+    opacity: 1;
+    visibility: visible;
+    transition: 0.3s;
 }
 
 /*Movie List*/
