@@ -32,9 +32,10 @@
                 <a href="list.html"><li>Series</li></a>
                 <li class="dropdown-link"><a href="">Category</a>
                     <ul class="dropdown">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Drama</a></li>
-                        <li><a href="#">Romance</a></li>
+                        <!-- add category from backEnd -->
+                        {% for category in categories%}
+                        <li><a href="#">{{category.name}}</a></li>
+                        {% endfor %}
                     </ul>
                 </li>
                 <a href="list.html"><li>Anime</li></a>
@@ -81,45 +82,65 @@
         </div>
     </section>
 
+    <!-- Action -->
     <div class="title-category">
-        <p>Super Hero</p>
+        <p>Action</p>
         <p><a href="#">all</a></p>
     </div>
     <section class="section-category">
         <div class="section-movie-category">
-            <div class="movie-picture-category"></div>
-            <div class="movie-content-category">
-                <a href="#">
-                    <h4>Iron Man3</h4>
-                </a>
+            {% for webblog in webblogs %}
+            <div class="movie-picture-category">
+                <img src="{{webblog.image.url}}" alt="">
+                <div class="movie-content-category">
+                    <a href="#">
+                        <h4>{{webblog.name}}</h4>
+                    </a>
+                </div>
             </div>
-        </div>
-        <div class="section-movie-category">
-            <div class="movie-picture-category"></div>
-            <div class="movie-content-category">
-                <a href="#">
-                    <h4>Iron Man3</h4>
-                </a>
-            </div>
-        </div>
-        <div class="section-movie-category">
-            <div class="movie-picture-category"></div>
-            <div class="movie-content-category">
-                <a href="#">
-                    <h4>Iron Man3</h4>
-                </a>
-            </div>
-        </div>
-        <div class="section-movie-category">
-            <div class="movie-picture-category"></div>
-            <div class="movie-content-category">
-                <a href="#">
-                    <h4>Iron Man3</h4>
-                </a>
-            </div>
+            {% endfor %}
         </div>
     </section>
 
+    <!-- Anime -->
+    <div class="title-category">
+        <p>Anime</p>
+        <p><a href="#">all</a></p>
+    </div>
+    <section class="section-category">
+        <div class="section-movie-category">
+            {% for webblog in webblogs %}
+            <div class="movie-picture-category">
+                <img src="{{webblog.image.url}}" alt="">
+                <div class="movie-content-category">
+                    <a href="#">
+                        <h4>{{webblog.name}}</h4>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    <!-- Drama -->
+    
+    <div class="title-category">
+        <p>Drama</p>
+        <p><a href="#">all</a></p>
+    </div>
+    <section class="section-category">
+        <div class="section-movie-category">
+            {% for webblog in webblogs %}
+            <div class="movie-picture-category">
+                <img src="{{webblog.image.url}}" alt="">
+                <div class="movie-content-category">
+                    <a href="#">
+                        <h4>{{webblog.name}}</h4>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
     <!-- navbar-End -->
     <div class="container-bottom">
         <nav class="navbar-kappa-End">
