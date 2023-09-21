@@ -8,24 +8,44 @@ from django.core.paginator import Paginator , EmptyPage , InvalidPage #แบ่
 
 #HomePage
 def homePage(request):
+    #Action = 1
     categories = Category.objects.all()
-    # categories = Category.objects.filter(category_id=6)
-    # webblogs = webBlogs.objects.all()
+    webblogsFilter1 = webBlogs.objects.filter(category_id=1)
+    paginator1 = Paginator(webblogsFilter1,4)
 
-    # #Filter category
-    webblogsFilter = webBlogs.objects.filter(category_id=1)
-
-    #pagination แบ่งหน้า
-    paginator = Paginator(webblogsFilter,4)
-    #คลิกหน้า 1,2,3
     try:
         page = int(request.Get.get('page','1'))
     except:
         page = 1
     try:
-        blockPerPage = paginator.page(page)
+        blockPerPage1 = paginator1.page(page)
     except(EmptyPage,InvalidPage):
-        blockPerPage = paginator.page(paginator.num_pages)
+        blockPerPage1 = paginator1.page(paginator1.num_pages)
     
-    return render(request,"frontEnd/homePage.html",{'categories':categories,'webblogs':blockPerPage,'webblogsFilter':webblogsFilter})
+    #Anime = 6
+    webblogsFilter6 = webBlogs.objects.filter(category_id=6)
+    paginator6 = Paginator(webblogsFilter6,4)
+
+    try:
+        page = int(request.Get.get('page','1'))
+    except:
+        page = 1
+    try:
+        blockPerPage6 = paginator6.page(page)
+    except(EmptyPage,InvalidPage):
+        blockPerPage6 = paginator6.page(paginator6.num_pages)
+
+    # Drama
+    webblogsFilter2 = webBlogs.objects.filter(category_id=2)
+    paginator2 = Paginator(webblogsFilter2,4)
+
+    try:
+        page = int(request.Get.get('page','1'))
+    except:
+        page = 1
+    try:
+        blockPerPage2 = paginator2.page(page)
+    except(EmptyPage,InvalidPage):
+        blockPerPage2 = paginator2.page(paginator2.num_pages)
+    return render(request,"frontEnd/homePage.html",{'categories':categories,'webblogs1':blockPerPage1,'webblogsFilter1':webblogsFilter1,'webblogs6':blockPerPage6,'webblogs2':blockPerPage2})
 
