@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAPPA Movie
+    </title>
+    <link rel="stylesheet" href="{% static 'homePage.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'showPlay.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="{% static 'star.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'comment.css' %}"> -->
+</head>
+<body>
+    <div class="container-top">
+        <nav class="navbar-kappa-start">
+            <a class="navbar-brand" href="{%static 'homePage.html' %}">
+                <img src="https://cdn-icons-png.flaticon.com/512/7116/7116945.png" style="width: 92px; height: 92px;">
+            </a>                                                   
+            <div class="search">
+                <h1>search</h1>
+                <button class="search-icon" type="button">search</button>
+            </div>
+            <div class="navbar-collapse" id="navbar-collapse">
+                <ul class="navbar-li">
+                    <li><a href="{%static 'login.html' %}">log-in/Register</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="container-menu">
+        <nav class="navbar-kappa-menu">
+            <ul class="navbar-menu-li">
+                <a href="homePage.html"><li>Home</li></a>
+                <a href="list.html"><li>Series</li></a>
+                <li class="dropdown-link"><a href="">Category</a>
+                    <ul class="dropdown">
+                        <!-- add category from backEnd -->
+                        {% for category in categories%}
+                        <li><a href="#">{{category.name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <a href="list.html"><li>Anime</li></a>
+                <a href="list.html"><li>List</li></a>
+            </ul>
+        </nav>
+    </div>
+{% block contend %}
+
+{% endblock%}
+
+    <!-- navbar-End -->
+    <div class="container-bottom">
+        <nav class="navbar-kappa-End">
+            <div class="contrack">
+                
+            </div>
+            <a class="navbar-brand" href="{%static 'homePage.html' %}"></a>
+                <img src="https://cdn-icons-png.flaticon.com/512/7116/7116945.png" style="width: 194px; height: 194px;">
+        </nav>
+    </div>
+</body>
+</html>

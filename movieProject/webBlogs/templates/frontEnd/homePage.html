@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KAPPA Movie
     </title>
-    <link rel="stylesheet" href="{% static '/homePage.css' %}">
+    <link rel="stylesheet" href="{% static 'homePage.css' %}">
 </head>
 <body>
     <div class="container-top">
@@ -91,9 +91,9 @@
         <div class="section-movie-category">
             {% for webblog in webblogs1 %}
             <div class="movie-picture-category">
-                <img src="{{webblog.image.url}}" alt="">
+                <img src="{{webblog.image.url}}" alt="{{webblog.name}}">
                 <div class="movie-content-category">
-                    <a href="#">
+                    <a href="{%url 'player_detail' webblog.id%}">
                         <h4>{{webblog.name}}</h4>
                     </a>
                 </div>
@@ -111,9 +111,9 @@
         <div class="section-movie-category">
             {% for webblog in webblogs6 %}
             <div class="movie-picture-category">
-                <img src="{{webblog.image.url}}" alt="">
+                <img src="{{webblog.image.url}}" alt="{{webblog.name}}">
                 <div class="movie-content-category">
-                    <a href="#">
+                    <a href="{%url 'player_detail' webblog.id%}">
                         <h4>{{webblog.name}}</h4>
                     </a>
                 </div>
@@ -131,9 +131,9 @@
         <div class="section-movie-category">
             {% for webblog in webblogs2 %}
             <div class="movie-picture-category">
-                <img src="{{webblog.image.url}}" alt="">
+                <img src="{{webblog.image.url}}" alt="{{webblog.name}}">
                 <div class="movie-content-category">
-                    <a href="#">
+                    <a href="{%url 'player_detail' webblog.id%}">
                         <h4>{{webblog.name}}</h4>
                     </a>
                 </div>

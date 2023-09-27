@@ -49,3 +49,9 @@ def homePage(request):
         blockPerPage2 = paginator2.page(paginator2.num_pages)
     return render(request,"frontEnd/homePage.html",{'categories':categories,'webblogs1':blockPerPage1,'webblogsFilter1':webblogsFilter1,'webblogs6':blockPerPage6,'webblogs2':blockPerPage2})
 
+def showPlayer(request,id):
+    categories = Category.objects.all()
+    # link = webBlogs.objects.filter(category_id=1)
+    singleMovie = webBlogs.objects.get(id=id)
+    return render(request,"frontEnd/showPlay.html",{"singleMovie":singleMovie,'categories':categories})
+

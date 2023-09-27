@@ -6,8 +6,8 @@
 
 html{
     scroll-behavior: smooth;
-    background-color: rgb(0, 0, 0,1);
-    /* background-color: rgb(121, 114, 114); */
+    /* background-color: rgb(0, 0, 0,1); */
+    background-color: rgb(121, 114, 114);
 }
 
 .navbar-kappa-start{
@@ -57,6 +57,38 @@ html{
     text-decoration: none;
 }
 
+/*DropDown*/
+.dropdown a{
+    text-decoration: none;
+    transition: 0.2s;
+    width: 100%;
+}
+
+.dropdown a:hover{
+    background-color: gray;
+}
+
+.dropdown li{
+    display: flex;
+    position: relative;
+}
+
+.dropdown{
+    position: absolute;
+    display: block;
+    background-color: white;
+    top: 140px;
+    border-radius: 4px;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 10;
+}
+
+.dropdown-link:hover .dropdown{
+    opacity: 1;
+    visibility: visible;
+    transition: 0.3s;
+}
 
 .picture-promote {
     background-color: rgb(0, 0, 0, 1);
@@ -154,7 +186,7 @@ html{
     flex-direction: column;
     color: white;
     justify-content: flex-start;
-    margin-top: 8vh;
+    margin-top: 0;
 }
 
 .name-detail .title{
@@ -170,9 +202,10 @@ html{
     display: flex;
     align-items: flex-end;
     margin-right: 4vh;
+    width: 100%;
 }
 
-.teaser iframe{
-    width: 60vh;
-    height: 40vh;
+.movie iframe{
+    width: 100%;
+    height: 400px;
 }
