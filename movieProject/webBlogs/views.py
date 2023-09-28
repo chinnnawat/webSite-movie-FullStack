@@ -53,6 +53,8 @@ def homePage(request):
 
     #Suggestion Movie
     suggest = webBlogs.objects.all().order_by('views')[:3] #min->max 3 movies
+
+    
     
     return render(request,"frontEnd/homePage.html",{'categories':categories,'webblogs1':blockPerPage1,'webblogsFilter1':webblogsFilter1,'webblogs6':blockPerPage6,'webblogs2':blockPerPage2,'popular':popular,'suggest':suggest})
 
@@ -67,3 +69,6 @@ def showPlayer(request,id):
     suggest = webBlogs.objects.all().order_by('views')[:4] #min->max 3 movies
     return render(request,"frontEnd/showPlay.html",{"singleMovie":singleMovie,'categories':categories,'suggest':suggest})
 
+#search category
+def searchCategory(request,category_id):
+    pass

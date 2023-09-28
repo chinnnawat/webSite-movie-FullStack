@@ -62,7 +62,7 @@
                     <img src="{{pop.image.url}}" alt="">
                 </div>
                 <div class="movie-content">
-                    <a href="{%static 'showPlay.html' %}">
+                    <a href="{%url 'player_detail' pop.id%}">
                         <h1>{{pop.name}}</h1>
                     </a>
                 </div>
@@ -72,13 +72,14 @@
     </section>
 
     <!-- Action -->
+    {% for webblog in webblogs1|slice:":1" %}
     <div class="title-category">
         <p>Action</p>
-        <p><a href="#">all</a></p>
+        <p><a href="{% url 'searchCategory' webblog.category_id %}">all</a></p>
     </div>
     <section class="section-category">
         <div class="section-movie-category">
-            {% for webblog in webblogs1 %}
+            <!-- {% for webblog in webblogs1 %} -->
             <div class="movie-picture-category">
                 <img src="{{webblog.image.url}}" alt="{{webblog.name}}">
                 <div class="movie-content-category">
@@ -87,18 +88,20 @@
                     </a>
                 </div>
             </div>
-            {% endfor %}
+            <!-- {% endfor %} -->
         </div>
     </section>
+    {% endfor %}
 
     <!-- Anime -->
+    {% for webblog in webblogs6|slice:":1"  %}
     <div class="title-category">
         <p>Anime</p>
-        <p><a href="#">all</a></p>
+        <p><a href="{% url 'searchCategory' webblog.category_id %}">all</a></p>
     </div>
     <section class="section-category">
         <div class="section-movie-category">
-            {% for webblog in webblogs6 %}
+            <!-- {% for webblog in webblogs6 %} -->
             <div class="movie-picture-category">
                 <img src="{{webblog.image.url}}" alt="{{webblog.name}}">
                 <div class="movie-content-category">
@@ -107,18 +110,20 @@
                     </a>
                 </div>
             </div>
-            {% endfor %}
+            <!-- {% endfor %} -->
         </div>
     </section>
-    <!-- Drama -->
+    {% endfor %}
 
+    <!-- Drama -->
+    {% for webblog in webblogs2|slice:":1" %}
     <div class="title-category">
         <p>Drama</p>
-        <p><a href="#">all</a></p>
+        <p><a href="{% url 'searchCategory' webblog.category_id %}">all</a></p>
     </div>
     <section class="section-category">
         <div class="section-movie-category">
-            {% for webblog in webblogs2 %}
+            <!-- {% for webblog in webblogs2 %} -->
             <div class="movie-picture-category">
                 <img src="{{webblog.image.url}}" alt="{{webblog.name}}">
                 <div class="movie-content-category">
@@ -127,9 +132,11 @@
                     </a>
                 </div>
             </div>
-            {% endfor %}
+            <!-- {% endfor %} -->
         </div>
     </section>
+    {% endfor %}
+
     <!-- navbar-End -->
     <div class="container-bottom">
         <nav class="navbar-kappa-End">
