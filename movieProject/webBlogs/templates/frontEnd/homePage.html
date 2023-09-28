@@ -28,7 +28,7 @@
     <div class="container-menu">
         <nav class="navbar-kappa-menu">
             <ul class="navbar-menu-li">
-                <a href="homePage.html"><li>Home</li></a>
+                <a href=""><li>Home</li></a>
                 <a href="list.html"><li>Series</li></a>
                 <li class="dropdown-link"><a href="">Category</a>
                     <ul class="dropdown">
@@ -56,30 +56,19 @@
         <h3>Popular Movies</h3>
     </div>
     <section class="section-movie">
-        <div class="section-movie-popular">
-            <div class="movie-picture-popular"></div>
-            <div class="movie-content">
-                <a href="{%static 'showPlay.html' %}">
-                    <h1>Transformer</h1>
-                </a>
+        {% for pop in popular%}
+            <div class="section-movie-popular">
+                <div class="movie-picture-popular">
+                    <img src="{{pop.image.url}}" alt="">
+                </div>
+                <div class="movie-content">
+                    <a href="{%static 'showPlay.html' %}">
+                        <h1>{{pop.name}}</h1>
+                    </a>
+                </div>
             </div>
-        </div>
-        <div class="section-movie-popular">
-            <div class="movie-picture-popular"></div>
-            <div class="movie-content">
-                <a href="#">
-                    <h1>Transformer</h1>
-                </a>
-            </div>
-        </div>
-        <div class="section-movie-popular">
-            <div class="movie-picture-popular"></div>
-            <div class="movie-content">
-                <a href="#">
-                    <h1>Transformer</h1>
-                </a>
-            </div>
-        </div>
+        {% endfor%}
+        
     </section>
 
     <!-- Action -->

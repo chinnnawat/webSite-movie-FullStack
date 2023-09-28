@@ -12,7 +12,7 @@ class webBlogs(models.Model):
     created = models.DateTimeField(auto_now_add=True)   #Date upload movie
     link = models.CharField(max_length=2000, default='ไม่มี URL')
     linkTeaser = models.CharField(max_length=2000, default='ไม่มี URL')
-    # likes = models.IntegerField(default=0)
+    likes = models.IntegerField(default=0)
 
     #นำไปแสดงผล
     def __str__(self):

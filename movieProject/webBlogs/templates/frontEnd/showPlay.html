@@ -32,7 +32,7 @@
     <div class="container-menu">
         <nav class="navbar-kappa-menu">
             <ul class="navbar-menu-li">
-                <a href="homePage.html"><li>Home</li></a>
+                <a href="/"><li>Home</li></a>
                 <a href="list.html"><li>Series</li></a>
                 <li class="dropdown-link"><a href="">Category</a>
                     <ul class="dropdown">
@@ -50,9 +50,6 @@
 
     <div class="section-watch-movie">
         <div class="player">
-            <!-- <video controls>
-                <source src="video/Transformers 3 - Dark of the Moon (2011) - Final BattleFull scene (1080p) FULL HD.mp4" type="video/mp4">
-            </video> -->
             <div class="movie">
                 <iframe width="450" height="315" src={{singleMovie.link}}  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
@@ -63,7 +60,12 @@
         </div>
         <div class="detail">
             <div class="name-detail">
-                <div class="title"><h2>{{singleMovie.name}}</h2></div>
+                <div class="title">
+                    <h2>{{singleMovie.name}}</h2>
+                    <div class="view">
+                        <i class="fa-solid fa-eye">{{singleMovie.views}}</i>
+                    </div>
+                </div>
                 <div class="rating-star-staff"> 
                     <div class="btn-rate">
                         <button class="btn-review">review</button>
@@ -162,41 +164,23 @@
 <!--Recomment-->
     <div class="title-category">
         <p>Recommend</p>
+        <!-- <p><a href="#">all</a></p> -->
     </div>
     <section class="section-category">
         <div class="section-movie-category">
-            <div class="movie-picture-category"></div>
-            <div class="movie-content-category">
-                <a href="#">
-                    <h4>Iron Man3</h4>
-                </a>
+            {% for sugg in suggest %}
+            <div class="movie-picture-category">
+                <img src="{{sugg.image.url}}" alt="{{sugg.name}}">
+                <div class="movie-content-category">
+                    <a href="{%url 'player_detail' sugg.id%}">
+                        <h4>{{sugg.name}}</h4>
+                    </a>
+                </div>
             </div>
-        </div>
-        <div class="section-movie-category">
-            <div class="movie-picture-category"></div>
-            <div class="movie-content-category">
-                <a href="#">
-                    <h4>Iron Man3</h4>
-                </a>
-            </div>
-        </div>
-        <div class="section-movie-category">
-            <div class="movie-picture-category"></div>
-            <div class="movie-content-category">
-                <a href="#">
-                    <h4>Iron Man3</h4>
-                </a>
-            </div>
-        </div>
-        <div class="section-movie-category">
-            <div class="movie-picture-category"></div>
-            <div class="movie-content-category">
-                <a href="#">
-                    <h4>Iron Man3</h4>
-                </a>
-            </div>
+            {% endfor %}
         </div>
     </section>
+    
     <script src="{% static 'showPlay.js' %}"></script>
     <script src="{% static 'edit.js' %}"></script>
     <script src="{% static 'comment.js' %}"></script>
