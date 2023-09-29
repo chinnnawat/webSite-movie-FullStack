@@ -7,8 +7,8 @@
 
 html{
     scroll-behavior: smooth;
-    /* background-color: rgb(0, 0, 0,1); */
-    background-color: rgb(202, 202, 155);
+    background-color: rgb(0, 0, 0,1);
+    /* background-color: rgb(202, 202, 155); */
 }
 
 .navbar-kappa-start{
@@ -89,6 +89,15 @@ html{
     opacity: 1;
     visibility: visible;
     transition: 0.3s;
+}
+
+/*title*/
+.head{
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 2%;
+    margin-top: 2%;
 }
 
 /*Movie List*/
@@ -176,7 +185,8 @@ html{
 }
 
 .pages__container{
-    width: 28%;
+    padding: 1%;
+    width: auto;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -190,6 +200,9 @@ html{
     align-items: center;
     justify-content: center;
     border: solid 1px gray;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    /* padding: 2%; */
 }
 
 /*navbar End*/

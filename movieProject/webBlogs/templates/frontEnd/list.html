@@ -70,13 +70,11 @@
     <!-- pages number -->
     <div class="pages__number">
         <div class="pages__container">
-            <div class="pages" id="number1"><a href="#">1</a></div>
-            <div class="pages" id="number2"><a href="#">2</a></div>
-            <div class="pages" id="number3"><a href="#">3</a></div>
-            <div class="pages" id="others__page"><a href="#">...</a></div>
-            <div class="pages" id="number4"><a href="#">4</a></div>
-            <div class="pages" id="number5"><a href="#">5</a></div>
-            <div class="pages" id="number6"><a href="#">6</a></div>
+            {% if movieList.paginator.num_pages >= 1%}
+                {% for page_number in movieList.paginator.page_range%}
+                    <div class="pages" id="number1"><a href="?page={{page_number}}">{{page_number}}</a></div>
+                {% endfor%}
+            {% endif%}
         </div>
     </div>
 
