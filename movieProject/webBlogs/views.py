@@ -70,5 +70,8 @@ def showPlayer(request,id):
     return render(request,"frontEnd/showPlay.html",{"singleMovie":singleMovie,'categories':categories,'suggest':suggest})
 
 #search category
-def searchCategory(request,category_id):
-    pass
+def searchCategory(request,cat_id):
+    movieList = webBlogs.objects.filter(category_id=cat_id)
+
+    categories = Category.objects.all()
+    return render(request,"frontEnd/list.html",{'movieList':movieList,'categories':categories})

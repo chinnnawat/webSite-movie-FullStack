@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {%load static%}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Category List</title>
-    <link rel="stylesheet" href="list.css">
+    <link rel="stylesheet" href="{% static 'list.css' %}">
 </head>
 <body>
+    <!-- Top Navbar -->
     <div class="container-top">
         <nav class="navbar-kappa-start">
-            <a class="navbar-brand" href="homePage.html">
+            <a class="navbar-brand" href="{%static 'homePage.html' %}">
                 <img src="https://cdn-icons-png.flaticon.com/512/7116/7116945.png" style="width: 92px; height: 92px;">
             </a>                                                   
             <div class="search">
@@ -18,7 +20,7 @@
             </div>
             <div class="navbar-collapse" id="navbar-collapse">
                 <ul class="navbar-li">
-                    <li><a href="login.html">log-in/Register</a></li>
+                    <li><a href="{%static 'login.html' %}">log-in/Register</a></li>
                 </ul>
             </div>
         </nav>
@@ -26,55 +28,44 @@
     <div class="container-menu">
         <nav class="navbar-kappa-menu">
             <ul class="navbar-menu-li">
-                <a href="homePage.html"><li>Home</li></a>
+                <a href="/"><li>Home</li></a>
                 <a href="list.html"><li>Series</li></a>
-                <a href="list.html"><li>Category</li></a>
+                <li class="dropdown-link"><a href="">Category</a>
+                    <ul class="dropdown">
+                        <!-- add category from backEnd -->
+                        {% for category in categories%}
+                        <li><a href="#">{{category.name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
                 <a href="list.html"><li>Anime</li></a>
                 <a href="list.html"><li>List</li></a>
             </ul>
         </nav>
     </div>
 
-    <!-- movie list title -->
-        <div class="head">
-            <h1>| Series</h1>
-        </div>
 
-    <!-- movie list -->
+    <!-- movie list title -->
+    {% for list in movieList|slice:":1"  %}
+    <div class="head">
+        <h1>| {{list.category}}</h1>
+    </div>
+    </div>
     <section class="section-category">
         <div class="section-movie-category">
-            <div class="movie-picture-category"></div>
-            <div class="movie-content-category">
-                <a href="#">
-                    <h4>Iron Man3</h4>
-                </a>
+            <!-- {% for list in movieList %} -->
+            <div class="movie-picture-category">
+                <img src="{{list.image.url}}" alt="{{list.name}}">
+                <div class="movie-content-category">
+                    <a href="{%url 'player_detail' list.id%}">
+                        <h4>{{list.name}}</h4>
+                    </a>
+                </div>
             </div>
-        </div>
-        <div class="section-movie-category">
-            <div class="movie-picture-category"></div>
-            <div class="movie-content-category">
-                <a href="#">
-                    <h4>Iron Man3</h4>
-                </a>
-            </div>
-        </div>
-        <div class="section-movie-category">
-            <div class="movie-picture-category"></div>
-            <div class="movie-content-category">
-                <a href="#">
-                    <h4>Iron Man3</h4>
-                </a>
-            </div>
-        </div>
-        <div class="section-movie-category">
-            <div class="movie-picture-category"></div>
-            <div class="movie-content-category">
-                <a href="#">
-                    <h4>Iron Man3</h4>
-                </a>
-            </div>
+            <!-- {% endfor %} -->
         </div>
     </section>
+    {% endfor %}
     
     <!-- pages number -->
     <div class="pages__number">

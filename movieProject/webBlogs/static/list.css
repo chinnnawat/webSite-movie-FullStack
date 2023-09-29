@@ -58,43 +58,96 @@ html{
     text-decoration: none;
 }
 
-/*Header List title*/
-.section-category{
-    font-size: 20rem;
+/*DropDown*/
+.dropdown a{
+    text-decoration: none;
+    transition: 0.2s;
+    width: 100%;
 }
 
-/*movie list*/
-.head h1{
-    margin-top: 5vh;
-    margin-left: 5vh;
-    font-size: 50px;
-    color: white;
+.dropdown a:hover{
+    background-color: gray;
 }
-.section-category{
-    width: auto;
+
+.dropdown li{
     display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    margin-left: 100px;
-    margin-right: 100px;
+    position: relative;
+}
+
+.dropdown{
+    position: absolute;
+    display: block;
+    background-color: white;
+    top: 140px;
+    border-radius: 4px;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 10;
+}
+
+.dropdown-link:hover .dropdown{
+    opacity: 1;
+    visibility: visible;
+    transition: 0.3s;
+}
+
+/*Movie List*/
+.section-category{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
     background-size: cover;
+    flex-wrap: wrap;
+}
+.section-movie-category{
+    margin-top: 1%;
+    margin-left: 2%;
+    margin-right: 2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
 }
 
 .movie-picture-category {
     position: relative;
-    width: 47vh;
-    height: 25vh;
-    background-image: url(https://cms.dmpcdn.com/dara/2020/09/15/e925a460-f73f-11ea-8fd2-c5183227dffd_original.jpg);
-    background-size: cover; 
+    width: 400px; /* กว้างเต็มจอ */
+    height: 25vh; /* สูงเต็มจอ */
+    background-size: cover; /* แสดงภาพเต็มจอและครอบคลุมพื้นที่ .movie-picture */
     background-position: center;
-    background-color: black; 
+    background-color: black; /* สีพื้นหลังถ้าภาพไม่เต็มจอ */
+    margin: 20px;
+}
+
+.movie-picture-category img{
+    width: 100%;
+    height: 100%;
 }
 
 .movie-content-category{
-    width: auto;
-    position: relative;
+    width: 100%;
+    position: absolute;
 
+}
+
+.movie-content-category h4 {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: white;
+    width: 100%;
+    color: rgb(0, 0, 0,1);
+    position: absolute;
+    bottom: 100px;
+    display: flex;
+    left: 0;
+    bottom: 0;
+    opacity: 0.7;
+    font-size: 24px;
+    padding: 10px;
 }
 
 .movie-content-category h4 {
