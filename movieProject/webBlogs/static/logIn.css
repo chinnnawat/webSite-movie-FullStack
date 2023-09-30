@@ -1,199 +1,95 @@
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html{
-    scroll-behavior: smooth;
-    background-color: rgb(0, 0, 0,1);
-}
-
-.navbar-kappa-start{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-}
-.search{
-    display: flex;
-    justify-content: space-between;
-}
-
-.search h1{
-    color: white;
-    font-size: 36px;
-}
-
-.navbar-li{
-    list-style: none;
-    color: rgba(229, 196, 79, 1);
-    font-size: 24px;
-    text-decoration: none;
-}
-
-.container-top{
-    background-color: rgba(48, 45, 45, 1);
-    width: 100%;
-    height: 93px;
-}
-
-.navbar-menu-li{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: row;
-    background-color: rgb(0, 0, 0,1);
-    height: 72px;
-    border: 1px solid gray;
-}
-
-
-.navbar-menu-li li{
-    list-style: none;
-    color: rgba(229, 196, 79, 1);
-    font-size: 24px;
-    text-decoration: none;
-}
-
-.container{
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background-image: url(https://cdn-icons-png.flaticon.com/512/7116/7116945.png);
-    background-size: 60vh 60vh; /* ปรับขนาดภาพให้ครอบคลุมพื้นที่ .container */
-    background-position: right bottom; /* จัดตำแหน่งภาพกลางพื้นที่ .container */
-    background-repeat: no-repeat;
-}
-
-.container h1{
-    color: white;
-    display: flex;
-}
-
-.box-login-register{
-    background-color: rgba(216, 209, 187, 0.7);
-    height: 70vh;
-    width: 62vh;
-    border-radius: 40px;
-}
-
-input::placeholder{
-    color: rgb(170, 166, 166);
-}
-
-.title-login h1{
-    margin: 5vh;
-    font-size: 60px;
-    color: white;
-}
-
-.Add-login-password{
-    margin: 0;
-    padding: 1vh;
+body{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    min-height: 100vh;
+    background: url("picture/6213932.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px 100px;
+    /* background: red; */
     width: 100%;
+    font-family: 'Roboto', sans-serif;
 }
 
-.Add-login-password input{
-    width: 92%;
-    height: 5vh;
-    margin: 1.0vh;
-    border-radius: 12px;
-    border: none;
-    outline: none;
-    padding: 2vh;
-    color: white;
-    background-color: rgba(117, 108, 108, 1);
-}
-
-input::placeholder{
-    color: rgb(170, 166, 166);
-}
-
-
-
-.container-password{
-    margin: 4vh;
-    margin-bottom: 1vh;
-    padding: 1vh;
-    border-radius: 15px;
-    background-color: rgba(117, 108, 108, 1);
-    color: white;
-}
-
-.container-repassword{
-    margin-right: 4.5vh;
-    text-align: right;
-}
-
-.container-repassword a{
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-}
-
-.submit-login-signUp{
-    margin-top: 10vh;
-    width: 100%;
-    height: 1.5rem;
-}
-
-.btn-login{
+.wrapper{
+    position: relative;
+    width: 400px;
+    height: 400px;
+    background: transparent;
+    border: 2px solid rgb(255, 255, 255,0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.wrapper .form-box{
+    width: 100%;
+    padding: 40px;
+}
+.form-box h2{
+    font-size: 2em;
+    color: #162938;
     text-align: center;
-    cursor: pointer;
-    padding: auto  ;
-    width: 100%;
-    height: 3rem;
+    font-weight:bold;
 }
-
-.btn-login button{
-    font-size: 24px;
-    border-radius: 15px;
-    margin: 4vh;
+.input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #162938;
+    margin: 30px 0;
+}
+.input-box label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-200%);
+    font-size: 1rem;
+    color: #162938;
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s;
+}
+.input-box input {
     width: 100%;
     height: 100%;
-    background-color: rgba(188, 183, 159, 1);
+    background: transparent;
     border: none;
-    color: white;
+    outline: none;
+    font-size: 1em;
+    color: #162938;
+    font-weight: 600;
+    padding: 0 35px 0 5px;
 }
-
-.sign-in{
+.input-box .icon{
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: #162938;
+    line-height: 57px;
+}
+.remember-forgot{
+    font-size: 0.9em;
+    color: #162938;
+    font-weight: 500;
+    margin: -15px 0 15px;
     display: flex;
-    margin: 2.5vh;
-    justify-content: center;
-}
-
-.sign-in h4{
-    color: white;
-    font-size: 20px;
-}
-
-.sign-in a{
-    color: rgba(229, 196, 79, 1);
-    font-size: 20px;
-}
-
-.container-bottom{
-    background-color: rgba(48, 45, 45, 1);
-    width: 100%;
-    height: 195px;
-}
-
-.navbar-kappa-End{
-    display: flex;
-    align-items: center;
     justify-content: space-between;
-    flex-direction: row;
-}
-.navbar-brand{
-    text-align: right;
 }

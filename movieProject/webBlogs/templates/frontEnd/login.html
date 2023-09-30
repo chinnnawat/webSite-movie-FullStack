@@ -1,42 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- {%load static%} -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LogIn Page</title>
-    <link rel="stylesheet" href="../../static/logIn.css">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../webBlogs/static/logIn.css">
 </head>
 <body>
-    <div class="container-top">
-        <nav class="navbar-kappa-start">
-            <a class="navbar-brand" href="/">
-                <img src="https://cdn-icons-png.flaticon.com/512/7116/7116945.png" style="width: 92px; height: 92px;">
-            </a>                                                   
-            <div class="navbar-collapse" id="navbar-collapse"></div>
-        </nav>
-    </div>
-    <div class="container">
-        <div class="box-login-register">
-            <div class="title-login">
-                <h1>Log In</h1>
-            </div>
-            <div class="Add-login-password">
-                <input type="text" placeholder="Email Address" style="font-size: 20px;">
-                <input type="text" placeholder="password" style="font-size: 20px;">
-            </div>
-            <div class="container-repassword"><a href="#">forgot password/Username</a></div>
-            <div class="submit-login-signUp">
-                <div class="btn-login">
-                    <button>LogIn</button>
+    <!-- header navbar-->
+    <header>
+        <h2 class="logo">logo</h2>
+        <nav></nav>
+    </header>
+
+    <!-- logIn -->
+    <div class="wrapper">
+        <div class="form-box login">
+            <h2>Login</h2>
+            <form action="#">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email">
+                    <label>Email</label>
                 </div>
-                <div class="sign-in">
-                    <h4>Already a user? </h4>
-                    <a href="register.html"> Sign a new</a>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password">
+                    <label>Password</label>
                 </div>
-            </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Remember me</label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <div class="login-register">
+                    <p>Don't have an account?<a href="#" class="register-link">Register</a></p>
+                </div>
+            </form>
         </div>
     </div>
-    
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
