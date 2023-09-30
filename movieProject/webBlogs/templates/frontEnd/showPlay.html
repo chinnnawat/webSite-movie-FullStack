@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     {%load static%}
+    {% load humanize %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Watch Movie</title>
@@ -63,7 +64,7 @@
                 <div class="title">
                     <h2>{{singleMovie.name}}</h2>
                     <div class="view">
-                        <i class="fa-solid fa-eye">{{singleMovie.views}}</i>
+                        <i class="fa-solid fa-eye">{{singleMovie.views | intcomma }}</i>
                     </div>
                 </div>
                 <div class="rating-star-staff"> 

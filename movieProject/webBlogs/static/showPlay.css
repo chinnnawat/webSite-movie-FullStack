@@ -179,11 +179,11 @@ html{
 
 .player video{
     width: 100%;
-    height: auto;
     /* height: 60vh; */
 }
 
 .name-detail{
+    width: 700px;
     display: flex;
     flex-direction: column;
     color: white;
@@ -209,7 +209,7 @@ html{
 
 .movie iframe{
     width: 100%;
-    height: 400px;
+    height: 500px;
 }
 
 /*view*/
