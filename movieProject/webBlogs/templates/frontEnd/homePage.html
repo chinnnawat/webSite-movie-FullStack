@@ -12,7 +12,7 @@
     <!-- Top Navbar -->
     <div class="container-top">
         <nav class="navbar-kappa-start">
-            <a class="navbar-brand" href="{%static 'homePage.html' %}">
+            <a class="navbar-brand" href="/">
                 <img src="https://cdn-icons-png.flaticon.com/512/7116/7116945.png" style="width: 92px; height: 92px;">
             </a>                                                   
             <div class="search">
@@ -21,7 +21,10 @@
             </div>
             <div class="navbar-collapse" id="navbar-collapse">
                 <ul class="navbar-li">
-                    <li><a href="{% url 'register' %}">log-in/Register</a></li>
+                    <li><a href="{% url 'member' %}">log-in/Register</a></li>
+                </ul>
+                <ul class="navbar-li">
+                    <li><a href="{% url 'logout' %}">logOut</a></li>
                 </ul>
             </div>
         </nav>

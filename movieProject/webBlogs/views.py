@@ -3,9 +3,10 @@ from django.http import HttpResponse
 from category.models import Category
 from .models import webBlogs
 from django.core.paginator import Paginator , EmptyPage , InvalidPage #แบ่งหน้า
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-
+@login_required(login_url="member")
 #HomePage
 def homePage(request):
     #Action = 1
