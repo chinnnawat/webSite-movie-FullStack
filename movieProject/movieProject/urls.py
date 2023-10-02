@@ -22,7 +22,8 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("webBlogs.urls")),
-    path('user/',include("loginsystem.urls"))
+    path('user/',include("loginsystem.urls")),
+    path('userPlayer/',include("showPlayer.urls"))
 ]
 
 #การรับ โหลดรูปภาพ

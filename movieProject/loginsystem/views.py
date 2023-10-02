@@ -61,5 +61,5 @@ def logInUser(request):
 #LogOut
 def logout(request):
     auth.logout(request)
-    return redirect("member")
+    return redirect("homePage")
 
