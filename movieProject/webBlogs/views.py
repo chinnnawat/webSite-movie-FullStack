@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from category.models import Category
 from .models import webBlogs
 from django.core.paginator import Paginator , EmptyPage , InvalidPage #แบ่งหน้า
+from django.http import JsonResponse
 
 def homePage(request):
     #Action = 1

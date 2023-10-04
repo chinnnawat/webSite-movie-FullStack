@@ -7,6 +7,7 @@
     <title>KAPPA Movie
     </title>
     <link rel="stylesheet" href="{% static 'homePage.css' %}">
+    <script src="https://kit.fontawesome.com/4ad4434805.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Top Navbar -->
@@ -15,9 +16,17 @@
             <a class="navbar-brand" href="/">
                 <img src="https://cdn-icons-png.flaticon.com/512/7116/7116945.png" style="width: 92px; height: 92px;">
             </a>                                                   
-            <div class="search">
-                <h1>search</h1>
-                <button class="search-icon" type="button">search</button>
+            <div class="search-box">
+                <div class="row">
+                    <input type="text" id="input-box" placeholder="search anything" autocomplete="off">
+                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+                <div class="result-box">
+                    <!-- <ul>
+                        <li>JavaScript</li>
+                        <li>Web Development</li>
+                    </ul> -->
+                </div>
             </div>
             <div class="navbar-collapse" id="navbar-collapse">
                 <ul class="navbar-li">
@@ -153,5 +162,6 @@
                 <img src="https://cdn-icons-png.flaticon.com/512/7116/7116945.png" style="width: 194px; height: 194px;">
         </nav>
     </div>
+    <script src="{% static 'homePage.js' %}"></script>
 </body>
 </html>
