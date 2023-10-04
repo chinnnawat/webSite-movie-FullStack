@@ -37,9 +37,10 @@
                 <li class="dropdown-link"><a href="">Category</a>
                     <ul class="dropdown">
                         <!-- add category from backEnd -->
-                        {% for category in categories%}
-                        <li><a href="#">{{category.name}}</a></li>
+                        {% for category in categories %}
+                            <li><a href="{% url 'searchCategory' category.id %}">{{category.name}}</a></li>
                         {% endfor %}
+                        <!-- <li><a href="">aaaaa</a></li> -->
                     </ul>
                 </li>
                 <a href="list.html"><li>Anime</li></a>
