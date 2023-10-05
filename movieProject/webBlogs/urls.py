@@ -1,7 +1,9 @@
 from django.urls import path
-from .views import homePage
+from .views import homePage,search
 urlpatterns = [
     path('', homePage,name="homePage"),
+    path('search',search,name="searchMovie")
+
     # path('player/<int:id>', showPlayer, name='player_detail'),
     # path('webblogs/category/<int:cat_id>',searchCategory,name='searchCategory')
 ]

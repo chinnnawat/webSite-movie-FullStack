@@ -6,8 +6,8 @@
 
 html{
     scroll-behavior: smooth;
-    background-color: rgb(0, 0, 0,1);
-    /* background-color: rgb(168, 40, 40); */
+    /* background-color: rgb(0, 0, 0,1); */
+    background-color: rgb(168, 40, 40);
 }
 
 .navbar-kappa-start{
@@ -19,12 +19,17 @@ html{
 
 /*Search*/
 .search-box{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-top: 1%;
+    transform: translateX(-50%);
     display: flex;
     width: 600px;
     background: white;
-    /* margin: 200px auto 0; */
     border-radius: 10px;
     flex-direction: column;
+    z-index: 1;
 }
 .row{
     display: flex;
@@ -68,10 +73,12 @@ button .fa-solid{
 }
 .result-box ul li:hover{
     background: #e9f3ff;
+    z-index: 1;
 }
 .result-box{
     max-height: 300px;
-    overflow: scroll;
+    overflow-y: scroll;
+    z-index: 1;
 }
 
 /*Navbar*/

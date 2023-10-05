@@ -7,6 +7,7 @@
     <title>KAPPA Movie
     </title>
     <link rel="stylesheet" href="{% static 'homePage.css' %}">
+    <link rel="stylesheet" href="{% static 'searchNav.css' %}">
     <script src="https://kit.fontawesome.com/4ad4434805.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -15,19 +16,17 @@
         <nav class="navbar-kappa-start">
             <a class="navbar-brand" href="/">
                 <img src="https://cdn-icons-png.flaticon.com/512/7116/7116945.png" style="width: 92px; height: 92px;">
-            </a>                                                   
-            <div class="search-box">
-                <div class="row">
-                    <input type="text" id="input-box" placeholder="search anything" autocomplete="off">
-                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+            </a>
+            <!-- search Nav -->                                                   
+            <form action="{% url 'searchMovie' %}" method="post">
+                {% csrf_token %}
+                <div class="search-box">
+                    <div class="row">
+                        <input type="search" id="search-item" placeholder="search anything" aria-label="search" name="searched">
+                        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
                 </div>
-                <div class="result-box">
-                    <!-- <ul>
-                        <li>JavaScript</li>
-                        <li>Web Development</li>
-                    </ul> -->
-                </div>
-            </div>
+            </form>
             <div class="navbar-collapse" id="navbar-collapse">
                 <ul class="navbar-li">
                     <li><a href="{% url 'member' %}">log-in/Register</a></li>

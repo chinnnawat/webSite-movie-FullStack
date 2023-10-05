@@ -8,7 +8,7 @@ from django.http import JsonResponse
 def homePage(request):
     #Action = 1
     categories = Category.objects.all()
-    loopCategory = Category.objects.all()
+    loopCategory = webBlogs.objects.all()
     webblogsFilter1 = webBlogs.objects.filter(category_id=1)
     paginator1 = Paginator(webblogsFilter1,4)
 
@@ -76,4 +76,14 @@ def searchCategory(request, cat_id):
     # category
     categories = Category.objects.all()
     return render(request, "frontEnd/homePage.html", {'movieList': pagePerwebblog, 'categories': categories})
+
+#search bar
+def search(request):
+    categories = Category.objects.all()
+    if request.method =="POST":
+        searched = request.POST['searched']
+        venue = webBlogs.objects.filter(name__contains = searched)
+        return render(request,"frontEnd/search.html",{'searched':searched,'venue':venue,'categories':categories})
+    else:
+        return render(request,"frontEnd/search.html",{'searched':searched,'categories':categories})
 

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAPPA Movie
+    </title>
+    <link rel="stylesheet" href="{% static 'homePage.css' %}">
+    <link rel="stylesheet" href="{% static 'searchMovie.css' %}">
+    <script src="https://kit.fontawesome.com/4ad4434805.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <body>
+        <!-- Top Navbar -->
+        <div class="container-top">
+            <nav class="navbar-kappa-start">
+                <a class="navbar-brand" href="/">
+                    <img src="https://cdn-icons-png.flaticon.com/512/7116/7116945.png" style="width: 92px; height: 92px;">
+                </a>
+                <!-- search Nav -->                                                   
+                <form action="{% url 'searchMovie' %}" method="post">
+                    {% csrf_token %}
+                    <div class="search-box">
+                        <div class="row">
+                            <input type="search" id="search-item" placeholder="search anything" aria-label="search" name="searched">
+                            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                    </div>
+                </form>
+                <div class="navbar-collapse" id="navbar-collapse">
+                    <ul class="navbar-li">
+                        <li><a href="{% url 'member' %}">log-in/Register</a></li>
+                    </ul>
+                    <ul class="navbar-li">
+                        <li><a href="{% url 'logout' %}">logOut</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="container-menu">
+            <nav class="navbar-kappa-menu">
+                <ul class="navbar-menu-li">
+                    <a href="/"><li>Home</li></a>
+                    <a href="list.html"><li>Series</li></a>
+                    <li class="dropdown-link"><a href="">Category</a>
+                        <ul class="dropdown">
+                            <!-- add category from backEnd -->
+                            {% for category in categories %}
+                                <li><a href="{% url 'searchCategory' category.id %}">{{category.name}}</a></li>
+                            {% endfor %}
+                            <!-- <li><a href="">aaaaa</a></li> -->
+                        </ul>
+                    </li>
+                    <a href="list.html"><li>Anime</li></a>
+                    <a href="list.html"><li>List</li></a>
+                </ul>
+            </nav>
+        </div>
+    {% if searched %}
+        <h1>You searched for {{searched}}</h1>
+        {% for venues in venue %}
+        <div class="container-showSearch">
+            <div class="movie-picture-showSearch">
+                <img src="{{venues.image.url}}" alt="{{venues.name}}">
+                <div class="movie-content-showSearch">
+                    <a href="{%url 'player_detail' venues.id%}">
+                        <h4>{{venues.name}}</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="describtion-showSearch">
+                <h2>{{venues.description}}</h2>
+                <section><h1>{{venues.views}}</h1></section>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <h1>You forgot to search for ....</h1>
+    {% endif %}
+    
+
+</body>
+</html>

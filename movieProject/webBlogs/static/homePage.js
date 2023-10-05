@@ -1,44 +1,35 @@
-// Search Box navbar
+const search = () => {
+    const searchBox = document.getElementById("search-item").value.toUpperCase();
+    const storyItems = document.getElementById("product-list");
+    const product = storyItems.querySelectorAll(".product"); // ปรับให้เลือกรายการสินค้าภายใน storyItems
 
-// Data
-let availableKeywords = [
-    'HTML',
-    'CSS',
-    'Easy Tutorials',
-    'Web design tutorial',
-    'JavaScript',
-    'Where to learn coding design',
-    'How to create a website'
-];
+    for (var i = 0; i < product.length; i++) {
+      let match = product[i].querySelector('h2 a'); // แก้ไขการค้นหารายการชื่อสินค้า
+    
+        if (match) {
+            let textvalue = match.textContent || match.innerText;
+    
+            if (textvalue.toUpperCase().indexOf(searchBox) > -1) {
+            product[i].style.display = "";
+            } else {
+            product[i].style.display = "none";
+            }
+        }
+        }
+    };
+    
+// function search() {
+//     const searchInput = document.getElementById("search-item").value.toLowerCase();
+//     const productNames = document.querySelectorAll(".product-name");
 
-// Variables
-const resultBox = document.querySelector(".result-box");
-const inputBox = document.getElementById("input-box");
-
-inputBox.onkeyup = function() {
-    let result = [];
-    let input = inputBox.value;
-    if (input.length) {
-        result = availableKeywords.filter((keyword) => {
-            return keyword.toLowerCase().includes(input.toLowerCase());
-        });
-        console.log(result);
-    }
-    display(result);
-
-    if(!result.length){
-        resultBox.innerHTML = ''
-    }
-}
-
-function display(result){
-    const content = result.map((list)=>{
-        return "<li onclick = selectInput(this)>"+list+"</li>";
-    });
-    resultBox.innerHTML = "<ul>"+content.join('')+"</ul>";
-}
-
-function selectInput(list){
-    inputBox.value = list.innerHTML
-    resultBox.innerHTML = "";
-}
+//     productNames.forEach(function (productName) {
+//         const name = productName.textContent.toLowerCase();
+//         const productListItem = productName.closest(".product-list");
+//         if (name.includes(searchInput)) {
+//             productListItem.style.display = "block";
+//         } 
+//         else {
+//         productListItem.style.display = "none";
+//         }
+//     });
+//     }
