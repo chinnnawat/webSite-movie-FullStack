@@ -82,7 +82,7 @@ def search(request):
     categories = Category.objects.all()
     if request.method =="POST":
         searched = request.POST['searched']
-        venue = webBlogs.objects.filter(name__contains = searched)
+        venue = webBlogs.objects.filter(name__icontains = searched)
         return render(request,"frontEnd/search.html",{'searched':searched,'venue':venue,'categories':categories})
     else:
         return render(request,"frontEnd/search.html",{'searched':searched,'categories':categories})
