@@ -1,192 +1,179 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {%load static%}
-    {% load humanize %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Watch Movie</title>
-    <link rel="stylesheet" href="{% static 'showPlay.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    <link rel="stylesheet" href="{% static 'star.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="{% static 'comment.css' %}">
-    <!-- <link rel="stylesheet" href="{% static 'homePage.css' %}"> -->
-</head>
-<body>
-    <div class="container-top">
-        <nav class="navbar-kappa-start">
-            <a class="navbar-brand" href="/">
-                <img src="https://cdn-icons-png.flaticon.com/512/7116/7116945.png" style="width: 92px; height: 92px;">
-            </a>                                                   
-            <div class="search">
-                <h1>search</h1>
-                <button class="search-icon" type="button">search</button>
-            </div>
-            <div class="navbar-collapse" id="navbar-collapse">
-                <ul class="navbar-li">
-                    <li><a href="{%static 'login.html' %}">log-in/Register</a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-    <div class="container-menu">
-        <nav class="navbar-kappa-menu">
-            <ul class="navbar-menu-li">
-                <a href="/"><li>Home</li></a>
-                <a href="list.html"><li>Series</li></a>
-                <li class="dropdown-link"><a href="">Category</a>
-                    <ul class="dropdown">
-                        <!-- add category from backEnd -->
-                        {% for category in categories %}
-                            <li><a href="{% url 'searchCategory' category.id %}">{{category.name}}</a></li>
-                        {% endfor %}
-                    </ul>
-                </li>
-                <a href="list.html"><li>Anime</li></a>
-                <a href="list.html"><li>List</li></a>
-                <ul class="navbar-li">
-                    <li><a href="{% url 'logout' %}">logOut</a></li>
-                </ul>
-            </ul>
-        </nav>
-    </div>
+{% extends "frontEnd/layout.html" %}
 
-    <div class="section-watch-movie">
-        <div class="player">
-            <div class="movie">
-                <iframe width="450" height="315" src={{singleMovie.link}}  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-            <div class="like__count">
-                <i class="far fa-heart"></i>
-                <small class="count">0</small>
-            </div>
+{% load humanize %}
+{% block content %}
+<!-- play movie -->
+<div class="section-watch-movie">
+    <div class="player">
+        <div class="movie">
+            <iframe width="450" height="315" src={{singleMovie.link}}  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
-        <div class="detail">
-            <div class="name-detail">
-                <div class="title">
-                    <h2>{{singleMovie.name}}</h2>
-                    <div class="view">
-                        <i class="fa-solid fa-eye">{{singleMovie.views | intcomma }}</i>
-                    </div>
+        <div class="like__count">
+            <i class="far fa-heart"></i>
+            <small class="count">0</small>
+        </div>
+    </div>
+    <div class="detail">
+        <div class="name-detail">
+            <div class="title">
+                <h2>{{singleMovie.name}}</h2>
+                <div class="view">
+                    <i class="fa-solid fa-eye">{{singleMovie.views | intcomma }}</i>
                 </div>
-                <div class="rating-star-staff"> 
-                    <div class="btn-rate">
-                        <button class="btn-review">review</button>
-                    </div>
-                    <section class="modal-container">
-                        <div class="modal">
-                            <div class="container">
-                                <div class="post">
-                                    <div class="text">Thank for rating us!</div>
-                                    <div class="edit">Edit</div>
-                                </div>
-                                <div class="star-widget">
-                                    <input type="radio" name="rate" id="rate-5">
-                                    <label for="rate-5" class="fas fa-star"></label>
-                                    <input type="radio" name="rate" id="rate-4">
-                                    <label for="rate-4" class="fas fa-star"></label>
-                                    <input type="radio" name="rate" id="rate-3">
-                                    <label for="rate-3" class="fas fa-star"></label>
-                                    <input type="radio" name="rate" id="rate-2">
-                                    <label for="rate-2" class="fas fa-star"></label>
-                                    <input type="radio" name="rate" id="rate-1">
-                                    <label for="rate-1" class="fas fa-star"></label>
-                                    <form action="#" class="form">
-                                        <header></header>
-                                        <div class="textarea">
-                                            <textarea id="name__star" cols="30" placeholder="Yourname"></textarea>
-                                        </div>
-                                        <div class="textarea">
-                                            <textarea id="comment__star" cols="30" placeholder="Describe your experience..."></textarea>
-                                        </div>
-                                        <div class="btn">
-                                            <button type="submit" class="btn-post">Post</button>
-                                        </div>
-                                    </form>
-                                </div>
+            </div>
+            <!-- <div class="rating-star-staff"> 
+                <div class="btn-rate">
+                    <button class="btn-review">review</button>
+                </div>
+                <section class="modal-container">
+                    <div class="modal">
+                        <div class="container">
+                            <div class="post">
+                                <div class="text">Thank for rating us!</div>
+                                <div class="edit">Edit</div>
                             </div>
-                            <div class="top">
-                                <form class="form">
-                                    <div class="heart__icon center__display">
-                                        <i class="far fa-heart"></i>
+                            <div class="star-widget">
+                                <input type="radio" name="rate" id="rate-5">
+                                <label for="rate-5" class="fas fa-star"></label>
+                                <input type="radio" name="rate" id="rate-4">
+                                <label for="rate-4" class="fas fa-star"></label>
+                                <input type="radio" name="rate" id="rate-3">
+                                <label for="rate-3" class="fas fa-star"></label>
+                                <input type="radio" name="rate" id="rate-2">
+                                <label for="rate-2" class="fas fa-star"></label>
+                                <input type="radio" name="rate" id="rate-1">
+                                <label for="rate-1" class="fas fa-star"></label>
+                                <form action="#" class="form">
+                                    <header></header>
+                                    <div class="textarea">
+                                        <textarea id="name__star" cols="30" placeholder="Yourname"></textarea>
+                                    </div>
+                                    <div class="textarea">
+                                        <textarea id="comment__star" cols="30" placeholder="Describe your experience..."></textarea>
+                                    </div>
+                                    <div class="btn">
+                                        <button type="submit" class="btn-post">Post</button>
                                     </div>
                                 </form>
                             </div>
-                            <div class="div-btn-close">
-                                <button class="close-btn">close</button>
-                            </div>
                         </div>
-                    </section>
-                </div>
-                <h4>{{singleMovie.description}} </h4>
-                <div class="teaser">
-                    <iframe width="450" height="315" src={{singleMovie.link}} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
+                        <div class="top">
+                            <form class="form">
+                                <div class="heart__icon center__display">
+                                    <i class="far fa-heart"></i>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="div-btn-close">
+                            <button class="close-btn">close</button>
+                        </div>
+                    </div>
+                </section>
+            </div> -->
+
+            <!-- desciption -->
+            <br>
+            <div class="rating-star">
+                <span>
+                    <i class="fa fa-star{% if singleMovie.averageReview < 0.5 %}-o{% elif singleMovie.averageReview >= 0.5 and singleMovie.averageReview < 1 %}-half-o {% endif %}" aria-hidden="true"></i>
+                    <i class="fa fa-star{% if singleMovie.averageReview < 1.5 %}-o{% elif singleMovie.averageReview >= 1.5 and singleMovie.averageReview < 2 %}-half-o {% endif %}" aria-hidden="true"></i>
+                    <i class="fa fa-star{% if singleMovie.averageReview < 2.5 %}-o{% elif singleMovie.averageReview >= 2.5 and singleMovie.averageReview < 3 %}-half-o {% endif %}" aria-hidden="true"></i>
+                    <i class="fa fa-star{% if singleMovie.averageReview < 3.5 %}-o{% elif singleMovie.averageReview >= 3.5 and singleMovie.averageReview < 4 %}-half-o {% endif %}" aria-hidden="true"></i>
+                    <i class="fa fa-star{% if singleMovie.averageReview < 4.5 %}-o{% elif singleMovie.averageReview >= 4.5 and single_product.averageReview < 5 %}-half-o {% endif %}" aria-hidden="true"></i>
+                    <span>{{singleMovie.countReview}} Reviews</span>
+                </span>
+            
+            </div>
+            <br>
+            <h4>{{singleMovie.description}} </h4>
+            <br>
+            <div class="teaser">
+                <iframe width="450" height="315" src={{singleMovie.link}} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Comment -->
-    <div class="containers center__display">
-        <!-- <div class="top">
-            <form class="form">
-                <div class="heart__icon center__display">
-                    <i class="far fa-heart"></i>
-                </div> -->
-                <!-- <div class="form__info center__display">
-                    <input type="text" name="user" id="user" placeholder="--Your User name--">
-                    <input type="text" name="comment" id="comment" placeholder="--Comment--">
-                </div> -->
-                <!-- <button type="submit" class="submit__btn">Submit</button> -->
-            <!-- </form> -->
-            <!-- <div class="like__count">
-                <i class="far fa-heart"></i>
-                <small class="count">0</small>
-            </div> -->
-        <!-- </div> -->
-        <div class="comments__containers center__display">
-            <!-- <div class="comment__card">
-                <div class="pic center__display">
-                    A
-                </div>
-                <div class="comment__info">
-                    <small class="nickname">UserNameHere</small>
-                    <p class="comment">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, suscipit?</p>
-                    <div class="comment__bottom">
-                        <div class="heart__icon--comment">
-                            <i class="far fa-heart"></i>
-                        </div>
-                        <button>Reply</button>
-                    </div>
-                </div>
-            </div> -->
+<!--///////////////////////////////////////////////////////////// Comment /////////////////////////////////////////////////////////////-->
+
+<form action="{% url 'submit_review' singleMovie.id %}" method="POST">
+    {% csrf_token %}
+    <h5>Write your Reviews</h5>
+    {{singleMovie.averageReview}}
+    <div>
+        <!-- Rating Star -->
+        <label for="">How do you rate this Movie?</label>
+        <div class="rate">
+            <input type="radio" name="rating" id="rating10" value="5" required><label for="rating10" title="5"></label>
+            <input type="radio" name="rating" id="rating9" value="4.5" required><label for="rating9" title="4.5" class="half"></label>
+            <input type="radio" name="rating" id="rating8" value="4" required><label for="rating8" title="4"></label>
+            <input type="radio" name="rating" id="rating7" value="3.5" required><label for="rating7" title="3.5" class="half"></label>
+            <input type="radio" name="rating" id="rating6" value="3" required><label for="rating6" title="3"></label>
+            <input type="radio" name="rating" id="rating5" value="2.5" required><label for="rating5" title="2.5" class="half"></label>
+            <input type="radio" name="rating" id="rating4" value="2" required><label for="rating4" title="2"></label>
+            <input type="radio" name="rating" id="rating3" value="1.5" required><label for="rating3" title="1.5" class="half"></label>
+            <input type="radio" name="rating" id="rating2" value="1" required><label for="rating2" title="1"></label>
+            <input type="radio" name="rating" id="rating1" value="0.5" required><label for="rating1" title="0.5" class="half"></label>
+        </div>
+        <br>
+        Review Title:
+        <input type="text" class="form-control" name="subject">
+        <br>
+        Review:
+        <textarea name="review" rows="4"  class="form-control"></textarea>
+        <br>
+        {% if user.is_authenticated %}
+        <input type="submit" value="Submit Review" class="btn btn-primary">
+        {% else %}
+        <p>You must be logged in to post a review. <span><a href="{% url 'login' %}">Login now</a></span></p>
+        {% endif %}
+        
         </div>
     </div>
+</form>
+
+<!-- /////////////////// show comments ///////////////////////// -->
+{% for review in reviews %}
+<article class="box mb-3">
+    <div class="icontext w-100">
+        <div class="text">
+            <span class="date text-muted float-md-right">{{ review.created_at }}</span>
+            <h6 class="mb-1">{{ review.subject }}</h6>
+            <div class="rating-star">
+                <span>
+                    <i class="fa fa-star{% if review.rating == 0.5 %}-half-o {% elif review.rating < 1 %}-o {% endif %}" aria-hidden="true"></i>
+                    <i class="fa fa-star{% if review.rating == 1.5 %}-half-o {% elif review.rating < 2 %}-o {% endif %}" aria-hidden="true"></i>
+                    <i class="fa fa-star{% if review.rating == 2.5 %}-half-o {% elif review.rating < 3 %}-o {% endif %}" aria-hidden="true"></i>
+                    <i class="fa fa-star{% if review.rating == 3.5 %}-half-o {% elif review.rating < 4 %}-o {% endif %}" aria-hidden="true"></i>
+                    <i class="fa fa-star{% if review.rating == 4.5 %}-half-o {% elif review.rating < 5 %}-o {% endif %}" aria-hidden="true"></i>
+                </span>
+            </div>
+        </div>
+    </div> <!-- icontext.// -->
+    <div class="mt-3">
+        <p>{{ review.review }}</p>
+    </div>
+</article>
+{% endfor %}
 
 
 <!--Recomment-->
-    <div class="title-category">
-        <p>Recommend</p>
-        <!-- <p><a href="#">all</a></p> -->
-    </div>
-    <section class="section-category">
-        <div class="section-movie-category">
-            {% for sugg in suggest %}
-            <div class="movie-picture-category">
-                <img src="{{sugg.image.url}}" alt="{{sugg.name}}">
-                <div class="movie-content-category">
-                    <a href="{%url 'player_detail' sugg.id%}">
-                        <h4>{{sugg.name}}</h4>
-                    </a>
-                </div>
+<div class="title-category">
+    <p>Recommend</p>
+    <!-- <p><a href="#">all</a></p> -->
+</div>
+<section class="section-category">
+    <div class="section-movie-category">
+        {% for sugg in suggest %}
+        <div class="movie-picture-category">
+            <img src="{{sugg.image.url}}" alt="{{sugg.name}}">
+            <div class="movie-content-category">
+                <a href="{%url 'player_detail' sugg.id%}">
+                    <h4>{{sugg.name}}</h4>
+                </a>
             </div>
-            {% endfor %}
         </div>
-    </section>
-    
-    <script src="{% static 'showPlay.js' %}"></script>
-    <script src="{% static 'edit.js' %}"></script>
-    <script src="{% static 'comment.js' %}"></script>
-</body>
-</html>
+        {% endfor %}
+    </div>
+</section>
+{% endblock%}

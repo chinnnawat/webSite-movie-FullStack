@@ -23,7 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("webBlogs.urls")),
     path('user/',include("loginsystem.urls")),
-    path('userPlayer/',include("showPlayer.urls"))
+    path('userPlayer/',include("showPlayer.urls")),
+    path('comment/',include("comment.urls"))
 ]
 
 #การรับ โหลดรูปภาพ

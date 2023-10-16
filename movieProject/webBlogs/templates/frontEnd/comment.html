@@ -1,0 +1,12 @@
+{% extends "frontEnd/layout.html" %}
+
+{% load humanize %}
+{% block content %}
+    <h1>hello</h1>
+    <form action="{% url 'insertData' %}" method="POST">
+        {% csrf_token %}
+        <textarea class="comment" placeholder="Type your comment here." name="comment"></textarea>
+        <br>
+        <input type="submit" name="submit" value="Send">
+    </form>
+{% endblock%}

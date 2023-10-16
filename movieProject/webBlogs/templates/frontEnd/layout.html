@@ -2,25 +2,44 @@
 <html lang="en">
 <head>
     {%load static%}
+    {% load humanize %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KAPPA Movie
-    </title>
+    <title>Watch Movie</title>
     <link rel="stylesheet" href="{% static 'homePage.css' %}">
+    <link rel="stylesheet" href="{% static 'searchNav.css' %}">
+    <link rel="stylesheet" href="{% static 'showPlay.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="{% static 'star.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'comment.css' %}">
+    <link rel="stylesheet" href="{% static 'custom.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="{% static 'homePage.css' %}"> -->
 </head>
 <body>
+    <!-- Top Navbar -->
     <div class="container-top">
         <nav class="navbar-kappa-start">
-            <a class="navbar-brand" href="{%static 'homePage.html' %}">
+            <a class="navbar-brand" href="/">
                 <img src="https://cdn-icons-png.flaticon.com/512/7116/7116945.png" style="width: 92px; height: 92px;">
-            </a>                                                   
-            <div class="search">
-                <h1>search</h1>
-                <button class="search-icon" type="button">search</button>
-            </div>
+            </a>
+            <!-- search Nav -->                                                   
+            <form action="{% url 'searchMovie' %}" method="post">
+                {% csrf_token %}
+                <div class="search-box">
+                    <div class="row">
+                        <input type="search" id="search-item" placeholder="search anything" aria-label="search" name="searched">
+                        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                </div>
+            </form>
             <div class="navbar-collapse" id="navbar-collapse">
                 <ul class="navbar-li">
-                    <li><a href="{%static 'login.html' %}">log-in/Register</a></li>
+                    <li><a href="{% url 'member' %}">log-in/Register</a></li>
+                </ul>
+                <ul class="navbar-li">
+                    <li><a href="{% url 'logout' %}">logOut</a></li>
                 </ul>
             </div>
         </nav>
@@ -28,14 +47,15 @@
     <div class="container-menu">
         <nav class="navbar-kappa-menu">
             <ul class="navbar-menu-li">
-                <a href="homePage.html"><li>Home</li></a>
+                <a href=""><li>Home</li></a>
                 <a href="list.html"><li>Series</li></a>
                 <li class="dropdown-link"><a href="">Category</a>
                     <ul class="dropdown">
                         <!-- add category from backEnd -->
-                        {% for category in categories%}
-                        <li><a href="#">{{category.name}}</a></li>
+                        {% for category in categories %}
+                            <li><a href="{% url 'searchCategory' category.id %}">{{category.name}}</a></li>
                         {% endfor %}
+                        <!-- <li><a href="">aaaaa</a></li> -->
                     </ul>
                 </li>
                 <a href="list.html"><li>Anime</li></a>
@@ -43,19 +63,12 @@
             </ul>
         </nav>
     </div>
-{% block contend %}
 
-    {% endblock%}
-
-    <!-- navbar-End -->
-    <div class="container-bottom">
-        <nav class="navbar-kappa-End">
-            <div class="contrack">
-                
-            </div>
-            <a class="navbar-brand" href="{%static 'homePage.html' %}"></a>
-                <img src="https://cdn-icons-png.flaticon.com/512/7116/7116945.png" style="width: 194px; height: 194px;">
-        </nav>
-    </div>
+    {% block content%}
+    {% endblock %}
+    
+    <script src="{% static 'showPlay.js' %}"></script>
+    <script src="{% static 'edit.js' %}"></script>
+    <script src="{% static 'comment.js' %}"></script>
 </body>
 </html>

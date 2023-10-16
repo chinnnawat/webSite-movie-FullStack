@@ -1,10 +1,13 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render,redirect
+from webBlogs.models import Comment
 from category.models import Category
-from webBlogs.models import ReviewRating, webBlogs
-from django.core.paginator import Paginator , EmptyPage , InvalidPage #แบ่งหน้า
-from django.contrib.auth.decorators import login_required
+from webBlogs.models import webBlogs
 from django.contrib import auth
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+# Create your views here.
+def panel(request):
+    return render(request,"frontEnd/comment.html")
 
 @login_required(login_url="member")
 # Create your views here.
@@ -14,20 +17,9 @@ def showPlayer(request,id):
     singleMovie.views = singleMovie.views+1
     singleMovie.save()
 
-    
-
     #Suggestion Movie
     suggest = webBlogs.objects.all().order_by('views')[:4] #min->max 3 movies
-
-    # Get the reviews
-    reviews = ReviewRating.objects.filter(product_id = singleMovie.id, status = True)
-    context = {
-        'singleMovie':singleMovie,
-        'categories':categories,
-        'suggest':suggest,
-        'reviews':reviews,
-    }
-    return render(request,'frontEnd/showPlay.html',context)
+    return render(request,"frontEnd/showPlay.html",{"singleMovie":singleMovie,'categories':categories,'suggest':suggest})
 
 #search category
 from django.core.paginator import Paginator, EmptyPage, InvalidPage
@@ -51,3 +43,15 @@ def searchCategory(request, cat_id):
     # category
     categories = Category.objects.all()
     return render(request, "frontEnd/list.html", {'movieList': pagePerwebblog, 'categories': categories})
+
+def insertData(request):
+    if request.method == "POST":
+        comment = request.POST["comment"]
+        writer = auth.get_user(request)
+        comment = Comment(body = comment,name = writer)
+        comment.save()
+        messages.info(request,"completed")
+        return redirect("homePage")
+    else:
+        messages.info(request,"cancel")
+        return redirect("homePage")

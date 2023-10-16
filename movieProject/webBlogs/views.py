@@ -1,9 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from category.models import Category
-from .models import webBlogs
+from webBlogs.form import ReviewForm
+from .models import ReviewRating, webBlogs,Comment
 from django.core.paginator import Paginator , EmptyPage , InvalidPage #แบ่งหน้า
 from django.http import JsonResponse
+from django.contrib import messages
+from django.shortcuts import get_object_or_404
 
 def homePage(request):
     #Action = 1
@@ -75,6 +78,8 @@ def searchCategory(request, cat_id):
 
     # category
     categories = Category.objects.all()
+
+    
     return render(request, "frontEnd/homePage.html", {'movieList': pagePerwebblog, 'categories': categories})
 
 #search bar
@@ -86,4 +91,42 @@ def search(request):
         return render(request,"frontEnd/search.html",{'searched':searched,'venue':venue,'categories':categories})
     else:
         return render(request,"frontEnd/search.html",{'searched':searched,'categories':categories})
+    
+
+def comment(request):
+    comment = Comment.objects.all()
+    return render(request,"frontEnd/showPlay.html",{'comment':comment})
+
+def product_detail(request, id):
+    singleMovie = webBlogs.objects.get(id=id)
+    # Get the reviews
+    reviews = ReviewRating.objects.filter(product_id = singleMovie.id, status = True)
+    print("b")
+    context = {
+
+        'reviews':reviews,
+    }
+    return render(request,'frontEnd/showPlay.html',context)
+
+def submit_review(request, id):
+    url = request.META.get('HTTP_REFERER')
+    
+    if request.method == 'POST':
+        try:
+            reviews = ReviewRating.objects.get(product__id=id)
+            form = ReviewForm(request.POST, instance=reviews)
+            form.save()
+            messages.success(request, 'Thank you! Your review has been updated.')
+        except ReviewRating.DoesNotExist:
+            product = get_object_or_404(webBlogs, id=id)
+            form = ReviewForm(request.POST)
+            if form.is_valid():
+                data = form.save(commit=False)
+                data.product = product
+                data.ip = request.META.get('REMOTE_ADDR')
+                data.user = request.user
+                data.save()
+                messages.success(request, 'Thank you! Your review has been submitted.')
+
+    return redirect(url)
 
