@@ -274,3 +274,39 @@ html{
     font-size: 24px;
     padding: 10px;
 }
+
+/*Comment*/
+.user-comment{
+    color: white;
+    border: solid 1px;
+    border-radius: 10px;
+    margin: 5%;
+}
+.user-comment input{
+    border: solid 1px;
+    width: 100%;
+    background: rgb(187, 183, 183);
+}
+.user-comment textarea{
+    border: solid 1px;
+    width: 100%;
+    background: rgb(187, 183, 183);
+    outline: none;
+}
+.user-comment .btn{
+    background: rgba(229, 196, 79, 1);
+    cursor: pointer;
+}
+
+/*Show Comment*/
+.icontext {
+    color: white;
+    width: 80%;
+    border: solid 1px;
+    margin: 5%;
+    border-radius: 20px;
+}
+
+.icontext .text{
+    margin: 1%;
+}

@@ -18,7 +18,7 @@ def showPlayer(request,id):
     singleMovie.save()
 
     #Suggestion Movie
-    suggest = webBlogs.objects.all().order_by('views')[:4] #min->max 3 movies
+    suggest = webBlogs.objects.all().order_by('views')[:3] #min->max 3 movies
     return render(request,"frontEnd/showPlay.html",{"singleMovie":singleMovie,'categories':categories,'suggest':suggest})
 
 #search category

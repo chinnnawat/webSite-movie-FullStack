@@ -6,8 +6,7 @@
 
 html{
     scroll-behavior: smooth;
-    /* background-color: rgb(0, 0, 0,1); */
-    background-color: rgb(168, 40, 40);
+    background-color: rgb(0, 0, 0,1);
 }
 
 .navbar-kappa-start{
@@ -89,6 +88,17 @@ button .fa-solid{
     text-decoration: none;
 }
 
+
+.navbar-li li a{
+    color: rgba(229, 196, 79, 1);
+    text-decoration: none;
+}
+
+.dropdown-link a{
+    color: rgba(229, 196, 79, 1);
+    text-decoration: none;
+}
+
 .container-top{
     background-color: rgba(48, 45, 45, 1);
     width: 100%;
@@ -103,6 +113,10 @@ button .fa-solid{
     background-color: rgb(0, 0, 0,1);
     height: 72px;
     border: 1px solid gray;
+}
+
+.navbar-menu-li a {
+    text-decoration: none;
 }
 
 

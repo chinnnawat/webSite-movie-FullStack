@@ -17,7 +17,7 @@ def showPlayer(request,id):
     
 
     #Suggestion Movie
-    suggest = webBlogs.objects.all().order_by('views')[:4] #min->max 3 movies
+    suggest = webBlogs.objects.all().order_by('views')[:3] #min->max 3 movies
 
     # Get the reviews
     reviews = ReviewRating.objects.filter(product_id = singleMovie.id, status = True)

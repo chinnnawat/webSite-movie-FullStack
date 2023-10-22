@@ -1,48 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {%load static%}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Category List</title>
-    <link rel="stylesheet" href="{% static 'list.css' %}">
-</head>
-<body>
-    <!-- Top Navbar -->
-    <div class="container-top">
-        <nav class="navbar-kappa-start">
-            <a class="navbar-brand" href="{%static 'homePage.html' %}">
-                <img src="https://cdn-icons-png.flaticon.com/512/7116/7116945.png" style="width: 92px; height: 92px;">
-            </a>                                                   
-            <div class="search">
-                <h1>search</h1>
-                <button class="search-icon" type="button">search</button>
-            </div>
-            <div class="navbar-collapse" id="navbar-collapse">
-                <ul class="navbar-li">
-                    <li><a href="{%static 'login.html' %}">log-in/Register</a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-    <div class="container-menu">
-        <nav class="navbar-kappa-menu">
-            <ul class="navbar-menu-li">
-                <a href="/"><li>Home</li></a>
-                <a href="list.html"><li>Series</li></a>
-                <li class="dropdown-link"><a href="">Category</a>
-                    <ul class="dropdown">
-                        <!-- add category from backEnd -->
-                        {% for category in categories %}
-                            <li><a href="{% url 'searchCategory' category.id %}">{{category.name}}</a></li>
-                        {% endfor %}
-                    </ul>
-                </li>
-                <a href="list.html"><li>Anime</li></a>
-                <a href="list.html"><li>List</li></a>
-            </ul>
-        </nav>
-    </div>
+{% extends "frontEnd/layout.html" %}
+
+{% load humanize %}
+{%load static%}
+{% block content %}
 
 
     <!-- movie list title -->
@@ -89,3 +49,4 @@
     </div>
 </body>
 </html>
+{% endblock%}
